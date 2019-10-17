@@ -9,8 +9,14 @@
   </head>
 
   <body>
-    <%= link_to t("en"), locale: "en" %>
-    <%= link_to t("vi"), locale: "vi" %>
-    <%= yield %>
+    <%= render "layouts/header" %>
+    <div class="container-fluid translate">
+      <%= link_to t("en"), locale: "en" %>
+      <%= link_to t("vi"), locale: "vi" %>
+    </div>
+    <div class="container">
+      <%= yield %>
+      <%= render "layouts/footer" %>
+    </div>
   </body>
 </html>
