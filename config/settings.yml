@@ -7,3 +7,7 @@ ror: "https://rubyonrails.org/"
 micheal: "https://www.michaelhartl.com/"
 ror_news: "https://news.railstutorial.org/"
 ror_contact: "https://www.railstutorial.org/contact"
+regex: !ruby/regexp '/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i'
+max_name: 50
+max_email: 255
+min_pwd: 6
