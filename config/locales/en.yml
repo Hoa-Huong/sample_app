@@ -51,3 +51,5 @@ en:
   profile: "Profile"
   settings: "Settings"
   logout: "Log out"
+  remember: "Remember me on this computer"
+  remember_me: "Remember"
