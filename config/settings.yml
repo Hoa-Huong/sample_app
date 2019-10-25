@@ -12,3 +12,4 @@ max_name: 50
 max_email: 255
 min_pwd: 6
 size_gravatar: 80
+rem_me: 1
