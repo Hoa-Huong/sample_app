@@ -2,11 +2,9 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    user = User.find_by email: params[:session][:email].downcase
-    if user&.authenticate(params[:session][:password])
-      log_in user
-      params[:session][:remember_me] == Settings.rem_me ? remember(user) : forget(user)
-      redirect_to user
+    @user = User.find_by email: params[:session][:email].downcase
+    if @user&.authenticate(params[:session][:password])
+      login_remember
     else
       flash.now[:danger] = t "login_fail"
       render :new
@@ -16,5 +14,14 @@ class SessionsController < ApplicationController
   def destroy
     log_out
     redirect_to root_url
+  end
+
+  private
+
+  def login_remember
+    session = params[:session]
+    log_in @user
+    session[:remember_me] == Settings.rem_me ? remember(@user) : forget(@user)
+    redirect_back_or @user
   end
 end
