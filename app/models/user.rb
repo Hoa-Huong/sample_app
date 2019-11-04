@@ -63,6 +63,10 @@ class User < ApplicationRecord
     reset_sent_at < Settings.time_empire.hours.ago
   end
 
+  def feed
+    microposts.order_by_create_at
+  end
+
   private
 
   def downcase_email
