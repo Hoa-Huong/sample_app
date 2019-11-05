@@ -11,7 +11,10 @@ class Micropost < ApplicationRecord
     size: {less_than: Settings.size_image.megabytes,
            message: I18n.t("mes_size_out")}
   scope :order_by_create_at, ->{order created_at: :desc}
-
+  scope :feed, (lambda do |id|
+                  where(user_id: Relationship.following_ids(id))
+                  .or(where(user_id: id))
+                end)
   def display_image
     image.variant resize_to_limit: Settings.limit_size_image
   end

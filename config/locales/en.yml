@@ -103,3 +103,8 @@ en:
   mess_size_out: "should be less than 5MB"
   alert_max_file: "Maximum file size is 5MB. Please choose a smaller file."
   rails_logo: "Rails Logo"
+  following: "Following"
+  followers: "Followers"
+  follow: "Follow"
+  unfollow: "Unfollow"
+  not_found_relationship: "Can't find relationship"
