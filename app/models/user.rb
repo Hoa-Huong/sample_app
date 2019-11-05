@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :microposts, dependent: :destroy
+
   VALID_EMAIL_REGEX = Settings.regex
   attr_accessor :remember_token, :activation_token, :reset_token
 
@@ -60,6 +62,10 @@ class User < ApplicationRecord
 
   def password_reset_expired?
     reset_sent_at < Settings.time_empire.hours.ago
+  end
+
+  def feed
+    microposts.order_by_create_at
   end
 
   private

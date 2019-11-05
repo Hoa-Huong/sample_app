@@ -8,7 +8,9 @@ class UsersController < ApplicationController
     @users = User.activated.page(params[:page]).per Settings.page
   end
 
-  def show; end
+  def show
+    @microposts = @user.microposts.page(params[:page]).per Settings.page
+  end
 
   def new
     @user = User.new
@@ -67,13 +69,5 @@ class UsersController < ApplicationController
 
   def admin_user
     redirect_to root_url unless current_user.admin?
-  end
-
-  def logged_in_user
-    return if logged_in?
-
-    store_location
-    flash[:danger] = t "login_again"
-    redirect_to login_url
   end
 end
