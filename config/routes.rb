@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
     root "static_page#home"
 
-    get "sessions/new"
     get "/help", to: "static_page#help"
     get "/about", to: "static_page#about"
     get "/contact", to: "static_page#contact"
@@ -14,5 +13,6 @@ Rails.application.routes.draw do
     resources :users
     resources :account_activations, only: :edit
     resources :password_resets, only: %i(new create edit update)
+    resources :microposts,only: %i(create destroy)
   end
 end
