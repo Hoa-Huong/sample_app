@@ -59,6 +59,7 @@ class UsersController < ApplicationController
   def load_user
     @user = User.find_by id: params[:id]
     return if @user
+
     flash[:danger] = t "not_user"
     redirect_to root_url
   end
